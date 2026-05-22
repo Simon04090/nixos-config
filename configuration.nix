@@ -26,7 +26,6 @@
   i18n.defaultLocale = "de_DE.UTF-8";
   console = {
   #   font = "Lat2-Terminus16";
-    keyMap = "de";
     useXkbConfig = true; # use xkb.options in tty.
   };
 
@@ -59,6 +58,8 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
+
+  nixpkgs.config.allowUnfree = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.simon = {
@@ -101,10 +102,6 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  system.copySystemConfiguration = true;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
