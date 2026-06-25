@@ -82,7 +82,15 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
+    nh
   ];
+
+  programs.nh = {
+    enable = true;
+    clean.enable = false;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/home/${username}/nixos-config"; # sets NH_OS_FLAKE variable for you
+  };
 
   programs.zsh = {
     enable = true;
