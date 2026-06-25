@@ -2,6 +2,9 @@
 {
   home.packages = with pkgs; [
       nix-output-monitor
+      jetbrains.clion
+      jetbrains.pycharm
+      jetbrains.rust-rover
   ];
 
   home.username = username;
