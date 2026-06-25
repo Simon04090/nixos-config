@@ -100,6 +100,11 @@
       source ${pkgs.zsh-nix-shell}/share/zsh-nix-shell/nix-shell.plugin.zsh
     '';
   };
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
+  };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
