@@ -120,6 +120,11 @@
       fixed-cidr-v6 = "fd00::/80";
     };
   };
+
+  nix.registry = {
+    home-manager.flake = inputs.home-manager;
+    nixpkgs.flake = inputs.nixpkgs;
+  };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
