@@ -71,6 +71,7 @@
       google-chrome
       tmux
     ];
+    shell = ${pkgs.zsh};
   };
 
 
@@ -83,6 +84,14 @@
     wget
   ];
 
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    enableGlobalCompInit = false;
+    interactiveShellInit = ''
+      source ${pkgs.zsh-nix-shell}/share/zsh-nix-shell/nix-shell.plugin.zsh
+    '';
+  };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
