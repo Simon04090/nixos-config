@@ -86,7 +86,7 @@
     enable = true;
     clean.enable = false;
     clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/home/${username}/nixos-config"; # sets NH_OS_FLAKE variable for you
+    flake = "/home/${username}/nixos-config"; # sets NH_FLAKE variable for you
   };
 
   programs.zsh = {
