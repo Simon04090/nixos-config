@@ -2,6 +2,7 @@
 {
   home.packages = with pkgs; [
       nix-output-monitor
+      google-chrome
       jetbrains.clion
       jetbrains.pycharm
       jetbrains.rust-rover
