@@ -1,5 +1,8 @@
 { config, pkgs, username, ... }:
 {
+
+  nixpkgs.config.allowUnfree = true;
+
   home.packages = with pkgs; [
       nix-output-monitor
       google-chrome
