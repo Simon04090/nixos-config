@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./Eduroam
     ];
 
   # Use the systemd-boot EFI boot loader.
