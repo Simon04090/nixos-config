@@ -14,7 +14,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, plasma-manager }:
+  outputs = { self, nixpkgs, home-manager, plasma-manager }@inputs:
     let username = "simon";
     in {
 
@@ -25,7 +25,7 @@
           ./configuration.nix
         ];
         specialArgs = {
-          inherit username;
+          inherit username inputs;
         };
       };
 
