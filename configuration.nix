@@ -11,6 +11,12 @@
       ./Eduroam
     ];
 
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg)
+    [
+      "libfprint-2-tod1-goodix"
+    ];
+
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -101,6 +107,13 @@
     enable = true;
     powerOnBoot = false;
   };
+
+
+  services.fprintd.enable = true;
+
+  services.fprintd.tod.enable = true;
+
+  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix;
 
   virtualisation.docker = {
     enable = true;
