@@ -5,7 +5,6 @@
 
   home.packages = with pkgs; [
       nix-output-monitor
-      google-chrome
       jetbrains.clion
       jetbrains.pycharm
       jetbrains.rust-rover
@@ -16,6 +15,10 @@
   home.homeDirectory = "/home/${username}";
 
   programs = {
+    google-chrome = {
+      enable = true;
+      plasmaSupport = true;
+    };
     git = {
       enable = true;
       settings = {
