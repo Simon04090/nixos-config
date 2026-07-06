@@ -32,10 +32,10 @@
       homeConfigurations.simon = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [
-          ./home.nix
+          ./home/home.nix
           plasma-manager.homeModules.plasma-manager
-          ./plasma.nix
-          ./desktop.nix
+          ./home/plasma.nix
+          ./home/desktop.nix
         ];
         extraSpecialArgs = {
           inherit username;
