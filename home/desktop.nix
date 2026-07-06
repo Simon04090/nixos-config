@@ -1,5 +1,5 @@
-{ pkgs, lib, ... } : {
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg)
+{ pkgs, ... } : {
+  allowUnfreePkg =
     [
       "google-chrome"
       "clion"

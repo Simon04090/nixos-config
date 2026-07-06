@@ -1,53 +1,65 @@
-{ pkgs, username, ... }:
+{ pkgs, lib, config, username, ... }:
 {
 
   imports = [
     ./shell.nix
   ];
-  home.username = username;
 
-  home.homeDirectory = "/home/${username}";
 
-  home.packages = with pkgs; [
-      nix-output-monitor
-      nil
-  ];
+  options.allowUnfreePkg = lib.mkOption {
+    type = lib.types.listOf lib.types.str;
+  };
 
-  programs = {
-    ssh = {
-      enable = true;
-      enableDefaultConfig = false;
-      settings = {
-        "tunnel-dos" = {
-          HostName = "login.dos.cit.tum.de";
-          User = "tunnel";
-        };
+  config = {
+    home.username = username;
 
-        "*.dos" = {
-          HostName = "%h.cit.tum.de";
-          User = "simonk";
-          ProxyJump = "tunnel-dos";
-        };
+    home.homeDirectory = "/home/${username}";
 
-        "op5" = {
-          HostName = "orangepi5ultra.dos.cit.tum.de";
-          User = "orangepi";
-          ProxyJump = "tunnel-dos";
+    home.packages = with pkgs; [
+        nix-output-monitor
+        nil
+    ];
+
+
+    nixpkgs.config.allowUnfreePredicate = pkg:
+      builtins.elem (lib.getName pkg) config.allowUnfreePkg;
+
+    programs = {
+      ssh = {
+        enable = true;
+        enableDefaultConfig = false;
+        settings = {
+          "tunnel-dos" = {
+            HostName = "login.dos.cit.tum.de";
+            User = "tunnel";
+          };
+
+          "*.dos" = {
+            HostName = "%h.cit.tum.de";
+            User = "simonk";
+            ProxyJump = "tunnel-dos";
+          };
+
+          "op5" = {
+            HostName = "orangepi5ultra.dos.cit.tum.de";
+            User = "orangepi";
+            ProxyJump = "tunnel-dos";
+          };
         };
       };
+
+
     };
 
 
+    # This value determines the Home Manager release that your
+    # configuration is compatible with. This helps avoid breakage
+    # when a new Home Manager release introduces backwards
+    # incompatible changes.
+    #
+    # You can update Home Manager without changing this value. See
+    # the Home Manager release notes for a list of state version
+    # changes in each release.
+    home.stateVersion = "25.11";
   };
-
-
-  # This value determines the Home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new Home Manager release introduces backwards
-  # incompatible changes.
-  #
-  # You can update Home Manager without changing this value. See
-  # the Home Manager release notes for a list of state version
-  # changes in each release.
-  home.stateVersion = "25.11";
 }
