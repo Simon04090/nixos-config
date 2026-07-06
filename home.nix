@@ -28,7 +28,28 @@
         };
       };
     };
+	ssh = {
+      enable = true;
+      enableDefaultConfig = false;
+      settings = {
+        "tunnel-dos" = {
+          HostName = "login.dos.cit.tum.de";
+          User = "tunnel";
+        };
 
+        "*.dos" = {
+          HostName = "%h.cit.tum.de";
+          User = "simonk";
+          ProxyJump = "tunnel-dos";
+        };
+
+        "op5" = {
+          HostName = "orangepi5ultra.dos.cit.tum.de";
+          User = "orangepi";
+          ProxyJump = "tunnel-dos";
+        };
+      };
+    };
     zsh = {
       enable = true;
       zsh-abbr = {
