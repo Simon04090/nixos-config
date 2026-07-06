@@ -59,8 +59,8 @@
           model = "pc105";
         };
         touchpads = [{
-            vendorId = "5945";
-            productId = "337984";
+            vendorId = "06CB";
+            productId = "CE68";
             name = "SYNA8024:00 06CB:CE68 Touchpad";
             naturalScroll = true;
 
