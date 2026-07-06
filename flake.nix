@@ -34,6 +34,8 @@
         modules = [
           ./home.nix
           plasma-manager.homeModules.plasma-manager
+          ./plasma.nix
+          ./desktop.nix
         ];
         extraSpecialArgs = {
           inherit username;
