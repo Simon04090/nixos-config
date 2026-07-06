@@ -1,5 +1,9 @@
 {lib, ...}:
 {
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg)
+    [
+      "zsh-abbr"
+    ];
   programs = {
     git = {
       enable = true;

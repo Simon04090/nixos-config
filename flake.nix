@@ -29,18 +29,29 @@
         };
       };
 
-      homeConfigurations.simon = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        modules = [
-          ./home/home.nix
-          plasma-manager.homeModules.plasma-manager
-          ./home/plasma.nix
-          ./home/desktop.nix
-        ];
-        extraSpecialArgs = {
-          inherit username;
+      homeConfigurations = {
+        simon = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          modules = [
+            ./home/home.nix
+            plasma-manager.homeModules.plasma-manager
+            ./home/plasma.nix
+            ./home/desktop.nix
+          ];
+          extraSpecialArgs = {
+            inherit username;
+          };
+        };
+        simonk = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          modules = [
+            ./home/home.nix
+            ./home/server.nix
+         ];
+          extraSpecialArgs = {
+            username = "simonk";
+          };
         };
       };
-
   };
 }
