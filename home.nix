@@ -81,6 +81,7 @@
       {
         location = "bottom";
         screen = "all";
+        height = 45;
         widgets = [
           # Or you can configure the widgets by adding the widget-specific options for it.
           # See modules/widgets for supported widgets and options for these widgets.
